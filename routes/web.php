@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PicController;
+use App\Http\Controllers\PhotoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +13,19 @@ use App\Http\Controllers\PicController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', function (){
+    return redirect('/photos');
 });
 
-Route::resource('pics', PicController::class);
+/*
+Route::get('/', function (){
+    return view('welcome');
+});
+*/
+
+Route::resource('photos', PhotoController::class);
 
 Auth::routes();
 

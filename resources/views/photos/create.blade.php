@@ -7,7 +7,7 @@
 				<h2>Agregar nueva imagen</h2>
 			</div>
 			<div class="pull-right">
-				<a class="btn btn-primary" href="{{ route('pics.index') }}"> Volver</a>
+				<a class="btn btn-primary" href="{{ route('photos.index') }}"> Volver</a>
 			</div>
 			<div class="card-body">
 				@if ($errors->any())
@@ -20,7 +20,7 @@
 						</ul>
 					</div>
 				@endif
-				<form action="{{ route('pics.store') }}" method="POST" enctype="multipart/form-data">
+				<form action="{{ route('photos.store') }}" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group row">
 

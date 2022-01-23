@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Pic;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
-class PicController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +13,9 @@ class PicController extends Controller
      */
     public function index()
     {
-        
-        $pics = Pic::latest()->paginate(5);
-        return view('pics.index', compact('pics'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $photosPerPage = 
+        $photos = Photo::latest()->paginate(10);
+        return view('photos.index', compact('photos')); //->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -26,7 +25,7 @@ class PicController extends Controller
      */
     public function create()
     {
-        return view('pics.create');
+        return view('photos.create');
     }
 
     /**
@@ -39,51 +38,50 @@ class PicController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
         $input = $request->all();
         if ($image = $request->file('image')) {
-            $destinationPath = 'image/';
+            $destinationPath = env('PHOTO_UPLOAD_DIR','uploads');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
+            $input['image'] = $destinationPath."/".$profileImage;
         }
-        Pic::create($input);
-        return redirect()->route('pics.index')
-            ->with('success', 'Imagen creada correctamente.');
+        Photo::create($input);
+        return redirect()->route('photos.index')->with('success', 'Imagen creada correctamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pic  $pic
+     * @param  \App\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function show(Pic $pic)
+    public function show(Photo $photo)
     {
-        return view('pics.show', compact('pic'));
+        return view('photos.show', compact('photo'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pic  $pic
+     * @param  \App\Photo  $photo
      * @return \Illuminate\Http\Response
      */
-    public function edit(pic $pic)
+    public function edit(Photo $photo)
     {
-        return view('pics.edit', compact('pic'));
+        return view('photos.edit', compact('photo'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pic $pic
+     * @param  \App\Photo $photo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pic $pic)
+    public function update(Request $request, Photo $photo)
     {
         $request->validate([
             'title' => 'required',
@@ -91,27 +89,26 @@ class PicController extends Controller
         ]);
         $input = $request->all();
         if ($image = $request->file('image')) {
-            $destinationPath = 'pics/';
+            $destinationPath = env('PHOTO_UPLOAD_DIR','uploads');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
+            $input['image'] = "$destinationPath."/".$profileImage";
         } else {
             unset($input['image']);
         }
-        $pic->update($input);
-        return redirect()->route('pics.index')
-            ->with('success', 'Imagen actualizada correctamente.');
+        $phot->update($input);
+        return redirect()->route('photos.index')->with('success', 'Imagen actualizada correctamente.');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pic $pic
+     * @param  \App\Photo $photo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pic $pic)
+    public function destroy(Photo $photo)
     {
-        $pic->delete();
-        return redirect()->route('pics.index')
+        $photo->delete();
+        return redirect()->route('photos.index')
             ->with('success', 'Imagen eliminada correctamente.');
     }
 }
