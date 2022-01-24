@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Album;
 use App\Models\Photo;
 
 class PhotoSeeder extends Seeder
@@ -14,6 +15,17 @@ class PhotoSeeder extends Seeder
      */
     public function run()
     {
-        Photo::factory()->count(25)->create();
+        $albums  = Album::all();
+        $albums->each(function ($album){
+           $photos = Photo::factory()->count(3)->create();
+           $album->cover = $photos->first->image->image;                      
+           $photos->each(function ($photo) use ($album){
+               $album->photos()->attach($photo);
+           });
+           $album->save();
+        });
+      
     }
 }
+
+

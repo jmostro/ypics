@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Photo;
 
-class PhotoFactory extends Factory
+class AlbumFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,8 +16,7 @@ class PhotoFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(1),
-            'description' => $this->faker->sentence(8),
-            'image' => $this->faker->image('public/photo_upload',300, 200,false),
+            'description' => $this->faker->sentence(8),            
         ];
     }
 }
