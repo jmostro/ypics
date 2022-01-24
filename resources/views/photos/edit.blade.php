@@ -1,52 +1,48 @@
 @extends('layouts.app')
 @section('content')
-	<div class="row">
-		<div class="col-lg-12 margin-tb">
-			<div class="pull-left">
-				<h2>Editar imagen</h2>
-			</div>
+	<div class="container">
+		<div class="justify-content-center col-md-8 offset-md-2">
+
 			<div class="pull-right">
 				<a class="btn btn-primary" href="{{ route('photos.index') }}"> Volver</a>
 			</div>
-		</div>
-	</div>
-	@if ($errors->any())
-		<div class="alert alert-danger">
-			<strong>Uy!</strong> Hubo algunos problemas con tu entrada.<br><br>
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
-	<form action="{{ route('photos.update', $photo->id) }}" method="POST" enctype="multipart/form-data">
-		@csrf
-		@method('PUT')
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12">
-				<div class="form-group">
-					<strong>Título:</strong>
-					<input type="text" name="title" value="{{ $photo->title }}" class="form-control" placeholder="Título">
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12">
-				<div class="form-group">
-					<strong>Descripción:</strong>
-					<textarea class="form-control" style="height:150px" name="detail"
-						placeholder="Descripción">{{ $photo->detail }}</textarea>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12">
-				<div class="form-group">
-					<strong>Imagen:</strong>
-					<input type="file" name="image" class="form-control" placeholder="imagen">
-					<img src="{{ $photo->getUrl(); }}" width="300px">
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 text-center">
-				<button type="submit" class="btn btn-primary">Guardar</button>
-			</div>
-		</div>
-	</form>
-@endsection
+			<div class="card mt-2 p-3 ">
+				<h2>Editar imagen</h2>
+				@if ($errors->any())
+					<div class=" alert alert-danger">
+						<strong>Uy!</strong> Hay algunos problemas con tu entrada.<br><br>
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+				<form action="{{ route('photos.update', $photo->id) }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div class="form-group row">
+
+						<div class="form-group">
+							<label for="title">Título</label>
+							<input type="text" name="title" class="form-control" placeholder="Título" value="{{ $photo->title }}">
+						</div>
+						<div class="form-group">
+							<label for="description">Descripción</label>
+							<textarea class="form-control" style="height:150px" name="description" placeholder="Descripción"
+								value="{{ $photo->description }}"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="image">Imagen</label>
+							<input type="file" name="image" class="form-control" placeholder="image" value="{{ $photo->image }}">
+							<div class="col-md-4 p-2 grey">
+							<img class="img-thumbnail" src="{{ $photo->getUrl() }}">
+							</div>
+						</div>
+						<div class="form-group mt-2 mb-2">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+					</div> <!-- form-group row -->
+				</form>
+			</div> <!-- card  -->
+		</div> <!-- row justify-content-center -->
+	@endsection

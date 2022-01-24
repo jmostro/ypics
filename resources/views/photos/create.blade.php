@@ -2,14 +2,13 @@
 @section('content')
 	<div class="container">
 
-		<div class="row justify-content-center">
-			<div class="card-header">
-				<h2>Agregar nueva imagen</h2>
-			</div>
+		<div class="justify-content-center col-md-8 offset-md-2">
+
 			<div class="pull-right">
 				<a class="btn btn-primary" href="{{ route('photos.index') }}"> Volver</a>
 			</div>
-			<div class="card-body">
+			<div class="card mt-2 p-3 ">
+				<h2>Agregar nueva imagen</h2>
 				@if ($errors->any())
 					<div class=" alert alert-danger">
 						<strong>Uy!</strong> Hay algunos problemas con tu entrada.<br><br>
@@ -25,20 +24,23 @@
 					<div class="form-group row">
 
 						<div class="form-group">
-							<strong>Título:</strong>
+							<label for="title">Título</label>
 							<input type="text" name="title" class="form-control" placeholder="Título" value="{{ old('title') }}">
 						</div>
 						<div class="form-group">
-							<strong>Descripción:</strong>
-							<textarea class="form-control" style="height:150px" name="detail" placeholder="Descripción" value="{{ old('detail') }}"></textarea>
+							<label for="description">Descripción</label>
+							<textarea class="form-control" style="height:150px" name="description" placeholder="Descripción"
+								value="{{ old('description') }}"></textarea>
 						</div>
 						<div class="form-group">
-							<strong>Imagen:</strong>
+							<label for="image">Imagen</label>
 							<input type="file" name="image" class="form-control" placeholder="image" value="{{ old('image') }}">
 						</div>
-						<button type="submit" class="btn btn-primary">Agregar</button>
-					</div>
-			</div>
-			</form>
-		</div>
+						<div class="form-group mt-2 mb-2">
+							<button type="submit" class="btn btn-primary">Agregar</button>
+						</div>
+					</div> <!-- form-group row -->
+				</form>
+			</div> <!-- card  -->
+		</div> <!-- row justify-content-center -->
 	@endsection

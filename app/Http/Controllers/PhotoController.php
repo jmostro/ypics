@@ -46,7 +46,7 @@ class PhotoController extends Controller
             $destinationPath = env('PHOTO_UPLOAD_DIR','uploads');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = $destinationPath."/".$profileImage;
+            $input['image'] = $profileImage;
         }
         Photo::create($input);
         return redirect()->route('photos.index')->with('success', 'Imagen creada correctamente.');
@@ -92,7 +92,7 @@ class PhotoController extends Controller
             $destinationPath = env('PHOTO_UPLOAD_DIR','uploads');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = "$destinationPath."/".$profileImage";
+            $input['image'] = $profileImage;
         } else {
             unset($input['image']);
         }
