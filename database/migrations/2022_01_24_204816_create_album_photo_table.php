@@ -16,9 +16,9 @@ class CreateAlbumPhotoTable extends Migration
         Schema::create('album_photo', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('id')->on('albums');
+            //$table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
             $table->unsignedBigInteger('photo_id');
-            $table->foreign('photo_id')->references('id')->on('photos');
+            //$table->foreign('photo_id')->references('id')->on('photos')->onDelete('cascade');
             $table->timestamps();
         });
     }

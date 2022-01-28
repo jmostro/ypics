@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\AlbumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,7 @@ use App\Http\Controllers\PhotoController;
 
 
 Route::get('/', function (){
-    return redirect('/photos');
+    return redirect('/albums');
 });
 
 /*
@@ -26,6 +27,7 @@ Route::get('/', function (){
 */
 
 Route::resource('photos', PhotoController::class);
+Route::resource('albums', AlbumController::class);
 
 Auth::routes();
 

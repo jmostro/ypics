@@ -22,7 +22,7 @@ class Photo extends Model
     }
 
     public function albums(){
-        return $this->belongsToMany('App\Album');
+        return $this->belongsToMany(Album::class);
     }
 
 

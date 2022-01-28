@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Photo;
+use App\Models\AlbumPhoto;
 
 class Album extends Model
 {
@@ -18,7 +19,6 @@ class Album extends Model
     }
 
     public function photos(){
-        return $this->belongsToMany('App\Models\Photo');
+        return $this->belongsToMany(Photo::class,'album_photo', 'album_id', 'photo_id');
     }
-  
 }

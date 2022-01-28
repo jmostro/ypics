@@ -12,8 +12,7 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $photosPerPage = 
+    {        
         $photos = Photo::latest()->paginate(10);
         return view('photos.index', compact('photos')); //->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -85,7 +84,7 @@ class PhotoController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
         ]);
         $input = $request->all();
         if ($image = $request->file('image')) {
@@ -96,7 +95,7 @@ class PhotoController extends Controller
         } else {
             unset($input['image']);
         }
-        $phot->update($input);
+        $photo->update($input);
         return redirect()->route('photos.index')->with('success', 'Imagen actualizada correctamente.');
     }
     /**

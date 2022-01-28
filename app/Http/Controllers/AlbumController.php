@@ -14,7 +14,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+
+        $albums = Album::latest()->paginate(5);                
+        return view('albums.index', compact('albums'));
     }
 
     /**
@@ -46,7 +48,9 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        $photos = $album->photos()->paginate(5);
+        
+        return view('albums.show', compact('photos'));
     }
 
     /**
