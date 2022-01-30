@@ -2,7 +2,7 @@
 @section('content')
 
 	<div class="container-fluid">
-		<h1>Hola</h1>
+		<h1>Sobre mí</h1>
 		<div class="row">
 			@if ($message = Session::get('success'))
 				<div class="alert alert-success">

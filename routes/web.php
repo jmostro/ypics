@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PhotoController;
-use App\Http\Controllers\AlbumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,18 +14,13 @@ use App\Http\Controllers\AlbumController;
 
 
 
-Route::get('/', function (){
-    return redirect('/albums');
-});
 
-/*
-Route::get('/', function (){
-    return view('welcome');
-});
-*/
 
-Route::resource('photos', PhotoController::class);
-Route::resource('albums', AlbumController::class);
+Route::get('/', function (){return view('welcome');})->name('welcome');
+Route::get('about', function (){return view('about');})->name('about');
+Route::get('albums', [App\Http\Controllers\AlbumController::class,'index'])->name('albums.index');
+Route::get('albums/{album}', [App\Http\Controllers\AlbumController::class,'show'])->name('albums.show');
+//Route::get('albums/{album}/photo/{photo}', [App\Http\Controllers\PhotoController::class,'show'])->name('photos.show'); // TODO: Should be replaced by a js viewer
 
 Auth::routes();
 

@@ -2,6 +2,7 @@
 @section('content')
 
 	<div class="container-fluid">
+		<h1>Portafolio</h1>
 		<div class="row">
 			@if ($message = Session::get('success'))
 				<div class="alert alert-success">
@@ -22,10 +23,7 @@
 
 			@endforeach
 			{{ $albums->links() }}		
-		</div> <!-- row -->
-		
-		<div class="py-5 text-right">
-			<a href="{{ route('photos.create') }}" class="btn btn-dark px-5 py-3 text-uppercase">Agregar imagen</a>
+		</div> <!-- row -->		
 		</div> <!-- py-5 text-right -->
 	</div> <!-- container-fluid -->	
 	
