@@ -8,7 +8,7 @@
 					<p>{{ $message }}</p>
 				</div>
 			@endif
-			{{ $photos = $album->photos()->paginate(5) }}
+			{{ $photos = $album->photos()->paginate(8) }}
 			@foreach ($photos as $photo)
 
 				<div class="col-xl-3 col-lg-4 col-md-6 mb-4">

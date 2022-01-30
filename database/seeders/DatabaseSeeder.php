@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AlbumSeeder::class);
+        $this->call(AlbumSeeder::class);        
+        $this->call(UserSeeder::class);
         $this->call(PhotoSeeder::class);
         // \App\Models\User::factory(10)->create();
     }

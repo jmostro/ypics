@@ -22,6 +22,6 @@ Route::get('albums', [App\Http\Controllers\AlbumController::class,'index'])->nam
 Route::get('albums/{album}', [App\Http\Controllers\AlbumController::class,'show'])->name('albums.show');
 //Route::get('albums/{album}/photo/{photo}', [App\Http\Controllers\PhotoController::class,'show'])->name('photos.show'); // TODO: Should be replaced by a js viewer
 
-Auth::routes();
+Auth::routes(['register' => false, 'reset' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

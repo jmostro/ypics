@@ -13,7 +13,7 @@ class PhotoController extends Controller
      */
     public function index()
     {        
-        $photos = Photo::latest()->paginate(10);
+        $photos = Photo::latest()->paginate(8);
         return view('photos.index', compact('photos')); //->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

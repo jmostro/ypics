@@ -17,7 +17,7 @@ class PhotoSeeder extends Seeder
     {
         $albums  = Album::all();
         $albums->each(function ($album){
-           $photos = Photo::factory()->count(3)->create();
+           $photos = Photo::factory()->count(5)->create();
            $album->cover = $photos->first->image->image;                      
            $album->photos()->attach($photos);
            /*
