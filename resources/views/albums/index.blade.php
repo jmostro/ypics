@@ -10,7 +10,7 @@
 				</div>
 			@endif
 			@foreach ($albums as $album)				
-				<div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+				<div class="col-4 mb-4">
 					<div class="bg-white rounded shadow-sm">
 						<a href="{{ route('albums.show', $album->id) }}" class="text-dark">
 						<img src="{{ $album->getCoverUrl() }}" alt="{{ $album->title }}" class="card-img-top">
