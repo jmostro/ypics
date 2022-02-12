@@ -24,7 +24,11 @@
 						@endif
 					</div>
 				</div>
-			@endforeach
+			@endforeach		
 		</div>
+
+	</div>
+	<div class="pagination justify-content-center mt-3">
+		{{ $photos->links() }}
 	</div>
 @endsection

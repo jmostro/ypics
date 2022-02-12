@@ -22,12 +22,16 @@ Route::get('albums', [App\Http\Controllers\PortfolioController::class,'indexAlbu
 Route::get('albums/{album}', [App\Http\Controllers\PortfolioController::class,'showAlbum'])->name('albums.show');
 Route::get('admin', [App\Http\Controllers\Admin\AdminController::class,'dashboard'])->name('admin.dashboard');
 Route::get('admin/albums', [App\Http\Controllers\Admin\AdminController::class,'albums'])->name('admin.albums.index');
+Route::get('admin/albums/new',[App\Http\Controllers\Admin\AdminController::class,'newAlbum'])->name('admin.albums.new');
+Route::post('admin/albums/store',[App\Http\Controllers\Admin\AdminController::class,'storeAlbum'])->name('admin.albums.store');
 Route::get('admin/album/{album}', [App\Http\Controllers\Admin\AdminController::class,'showAlbum'])->name('admin.albums.show');
 Route::get('admin/album/{album}/edit', [App\Http\Controllers\Admin\AdminController::class,'editAlbum'])->name('admin.albums.edit');
 Route::put('admin/album/{album}/update', [App\Http\Controllers\Admin\AdminController::class,'updateAlbum'])->name('admin.albums.update');
 Route::get('admin/album/{album}/delete', [App\Http\Controllers\Admin\AdminController::class,'deleteAlbum'])->name('admin.albums.delete');
 Route::get('admin/album/{album}/remove/{photo}', [App\Http\Controllers\Admin\AdminController::class,'removePhotoFromAlbum'])->name('admin.album.removephoto');
 Route::get('admin/photos',[App\Http\Controllers\Admin\AdminController::class,'photos'])->name('admin.photos.index');
+Route::get('admin/photos/new',[App\Http\Controllers\Admin\AdminController::class,'newPhoto'])->name('admin.photos.new');
+Route::post('admin/photos/store',[App\Http\Controllers\Admin\AdminController::class,'storePhoto'])->name('admin.photos.store');
 Route::get('admin/photos/{photo}/edit',[App\Http\Controllers\Admin\AdminController::class,'editPhoto'])->name('admin.photos.edit');
 Route::put('admin/photos/{photo}/update',[App\Http\Controllers\Admin\AdminController::class,'updatePhoto'])->name('admin.photos.update');
 Route::get('admin/photos/{photo}/delete',[App\Http\Controllers\Admin\AdminController::class,'deletePhoto'])->name('admin.photos.delete');

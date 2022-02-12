@@ -1,21 +1,27 @@
-
 .card img {
-  max-height: 200px;
-  width: 250px;
-  margin: 0px;
-  padding: 0px;
+    max-height: 200px;
+    width: 250px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .photo-label {
-  position: absolute;
-  left:0%;
-  top: 65%;
-  transform: translate(-0%, -65%);
-  font-style: bold;
-  background-color: black;
-  color:antiquewhite;
-  opacity: 0.6;
-  padding: 3px;
-  width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 65%;
+    transform: translate(-0%, -65%);
+    font-style: bold;
+    background-color: black;
+    color: antiquewhite;
+    opacity: 0.6;
+    padding: 3px;
+    width: 100%;
 }
 
+.navbar-brand.abs {
+    position: absolute;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
