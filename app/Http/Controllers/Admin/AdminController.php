@@ -75,8 +75,8 @@ class AdminController extends Controller
  
     public function storePhoto(Request $request){       
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'title' => ['required', 'max:50' ],
+            'description' => ['nullable', 'max:500']
         ]);          
         if ($image = $request->file('image')) {
             $input = $request->all();        
@@ -94,8 +94,16 @@ class AdminController extends Controller
             }                        
         } else {
             unset($input['image']);
-        }        
-        return redirect()->route('admin.photos.edit',$photo->id)->with('success', 'Foto agregada correctamente.');
+        } 
+        return response()->json(['success' => $photo->id()]);               
+    }
+
+    public function viewPhotoSnippet(Photo $photo){
+        return view('admin.photos.viewSnippet', compact('photo'));
+    }
+
+    public function editPhotoSnippet(Photo $photo){
+        return view('admin.potos.editSnippet', compact('photo'));
     }
 
     public function editPhoto(Photo $photo){
