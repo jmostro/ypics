@@ -5,7 +5,7 @@
     padding: 0px;
 }
 
-.photo-label {
+.photo-label { /* unused atm */
     position: absolute;
     left: 0%;
     top: 65%;
@@ -16,6 +16,12 @@
     opacity: 0.6;
     padding: 3px;
     width: 100%;
+}
+
+.photo-thumb {
+    max-width: 300px;
+    overflow: hidden;
+    text-align: center;
 }
 
 .navbar-brand.abs {

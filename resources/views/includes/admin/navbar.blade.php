@@ -15,7 +15,7 @@
 			<ul class="navbar-nav ms-auto">
 				<a href="{{ route('admin.albums.new') }}"><button type="button" class="btn btn-success">Agregar album</button></a>
 				&nbsp;
-				<a href="{{ route('admin.photos.new') }}"><button type="button" class="btn btn-success">Agregar foto</button></a>
+				<a href="#"><button type="button" class="btn btn-success" id="addPhotoBtn">Agregar fotos</button></a>
 				<!-- Profile links -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
@@ -33,6 +33,10 @@
 				</li>
 
 			</ul>
+			<form action="{{ route('admin.photos.store') }}" method="POST" enctype="multipart/form-data" id="imagesFrm">
+				@csrf
+				<input type="file" hidden multiple name="images[]" id="images" class="form-control" placeholder="image">
+			</form>
 		</div>
 	</div>
 </nav>

@@ -9,7 +9,8 @@
 	<title>{{ config('app.name', 'Laravel') }}</title>
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}" defer></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	<script src="{{ asset('/js/newphoto.js') }}" defer></script>
 	@stack('view-scripts')
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
