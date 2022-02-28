@@ -11,11 +11,15 @@ class Album extends Model
 {
     use HasFactory;    
     protected $fillable = [
-        'title', 'description', 'cover'
+        'title', 'description', 'cover_id'
     ];
 
+    public function cover(){
+        return $this->belongsTo(Photo::class);
+    }
+
     public function getCoverUrl(){
-        return '/'.env('PHOTO_UPLOAD_DIR','photo_upload')."/".$this->cover;
+        return $this->cover()->first()->getUrl();
     }
 
     public function photos(){

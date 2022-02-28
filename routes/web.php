@@ -12,16 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
 Auth::routes(['register' => false, 'reset' => false]);
 Route::get('/', function (){return view('welcome');})->name('welcome');
 Route::get('about', function (){return view('about');})->name('about');
 Route::get('albums', [App\Http\Controllers\PortfolioController::class,'indexAlbums'])->name('albums.index');
 Route::get('albums/{album}', [App\Http\Controllers\PortfolioController::class,'showAlbum'])->name('albums.show');
 Route::get('admin', [App\Http\Controllers\Admin\AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('admin/albums', [App\Http\Controllers\Admin\AlbuumController::class,'index'])->name('admin.albums.index');
+Route::get('admin/albums', [App\Http\Controllers\Admin\AlbumController::class,'index'])->name('admin.albums.index');
 Route::get('admin/albums/new',[App\Http\Controllers\Admin\AlbumController::class,'new'])->name('admin.albums.new');
 Route::post('admin/albums/store',[App\Http\Controllers\Admin\AlbumController::class,'store'])->name('admin.albums.store');
 Route::get('admin/album/{album}', [App\Http\Controllers\Admin\AlbumController::class,'show'])->name('admin.albums.show');

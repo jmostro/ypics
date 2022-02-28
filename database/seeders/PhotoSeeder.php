@@ -17,14 +17,9 @@ class PhotoSeeder extends Seeder
     {
         $albums  = Album::all();
         $albums->each(function ($album){
-           $photos = Photo::factory()->count(5)->create();
-           $album->cover = $photos->first->image->image;                      
+           $photos = Photo::factory()->count(3)->create();
+           $album->cover()->associate($photos->first());             
            $album->photos()->attach($photos);
-           /*
-           $photos->each(function ($photo) use ($album){
-               $album->photos()->attach($photo);
-           });
-           */
            $album->save();
         });
       

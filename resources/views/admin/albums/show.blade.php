@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+@push('view-scripts')
+<script src="{{ asset('/js/editphoto.js') }}" defer></script>
+@endpush
 	<div class="container-fluid">
 		<div class="row">
 			<h1>{{ $album->title }}</h1>
@@ -9,17 +12,9 @@
 				</div>
 			@endif
 			@foreach ($album->photos as $photo)
-				<div class="card col-auto m-0 p-1">
-					<img src="{{ $photo->getUrl() }}" class="card-img-top">
-					<div class="card-footer">
-						<a href="{{route('admin.album.removephoto', ['album' => $album->id, 'photo' => $photo->id])}}"><i class="fas fa-times" title="Eliminar foto del album"></i></a>
-						&nbsp;
-						<a href="{{ route('admin.photos.edit' , $photo->id)}}"><i class="fas fa-edit" title="Modificar foto"></i></a>
-						<br>						
-					</div>
-				</div>
+				@include('admin.partials.photo')
 			@endforeach
+			<input id="csrf_token" type="hidden" value="{{ csrf_token() }}">
 		</div>
 	</div>
-
 @endsection
